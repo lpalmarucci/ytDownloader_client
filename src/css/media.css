@@ -15,6 +15,7 @@
     }
     #main > button{
         top: 77px !important;
+        right: 0 !important;
         padding: 1.5em;
     }
 }

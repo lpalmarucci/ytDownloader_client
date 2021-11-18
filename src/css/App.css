@@ -15,8 +15,9 @@
   --light7-color: #A9D6E5;
 }
 
-h1{
+#title{
   color: white;
+  z-index: 1;
 }
 
 *{

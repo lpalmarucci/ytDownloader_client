@@ -49,6 +49,6 @@ input{
     row-gap: 2em;
 }
 
-button{
+.login-button{
     position: relative;
 }
