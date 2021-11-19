@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
+
+:root{
+  --dark1-color: #012A4A;
+  --dark2-color: #013A63;
+  --dark3-color: #01497C;
+  --primary-color: #014F86;
+  --secondary-color: #01497C;
+  --light1-color: #2A6F97;
+  --light2-color: #2C7DA0;
+  --light3-color: #468FAF;
+  --light4-color: #61A5C2;
+  --light5-color: #89C2D9;
+  --light6-color: #A9D6E5;
+  --light7-color: #A9D6E5;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Shippori Antique B1', sans-serif;
+  }
+  
+  .warning-alert{
+    color: rgb(240, 240, 4);
+  }
+  
+  .error-alert{
+    color: rgb(233, 51, 51);
+  }
+  
+  .no-error-alert{
+    color: rgb(3, 185, 3);
+  }

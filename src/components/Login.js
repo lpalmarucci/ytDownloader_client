@@ -4,13 +4,16 @@ import axios from 'axios'
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { checkResponseStatus } from '../lib/request';
+import ErrorMessage from './ErrorMessage';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            errorMessage: '',
+            severity: ''
         }
         this.handleSubmitLoginForm = this.handleSubmitLoginForm.bind(this);
     }
@@ -29,7 +32,7 @@ class Login extends Component {
             if (checkResponseStatus(res.data)) {
                 this.props.history.push('/');
             } else {
-                console.error(res.data.body.errorMessage)
+                this.setState({ errorMessage: res.data.body.errorMessage, severity: res.data.severity });
             }
         })
 
@@ -45,6 +48,7 @@ class Login extends Component {
                     <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} />
                     <button type="submit" className="login-button" >Submit</button>
                 </form>
+                <ErrorMessage severity={this.state.severity.toLowerCase()} errorMessage={this.state.errorMessage} />
             </section>
         )
     }

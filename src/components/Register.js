@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom';
 import { checkResponseStatus } from '../lib/request';
+import ErrorMessage from './ErrorMessage';
 
 class Register extends Component {
     constructor(props) {
@@ -11,7 +12,8 @@ class Register extends Component {
             username: '',
             password: '',
             email: '',
-            errorMessage: ''
+            errorMessage: '',
+            severity: ''
         }
         this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     }
@@ -38,7 +40,8 @@ class Register extends Component {
                 // username: '',
                 // email: '',
                 // password: '',
-                errorMessage: ''
+                errorMessage: '',
+                severity: ''
             })
             if (checkResponseStatus(res.data)) {
                 this.setState({
@@ -48,14 +51,12 @@ class Register extends Component {
                 })
                 this.props.history.push('/login');
             } else {
-                console.error(res.data);
-                this.setState({ errorMessage: res.data.body.errorMessage });
+                this.setState({ errorMessage: res.data.body.errorMessage, severity: res.data.severity });
             }
         })
     }
 
     render() {
-
         return (
             <section className="login-section">
                 <h1>Register (or <Link to='/login'>login</Link>)</h1>
@@ -65,7 +66,7 @@ class Register extends Component {
                     <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} required />
                     <button type="submit" className="login-button" >Submit</button>
                 </form>
-                {this.state.errorMessage === '' ? <></> : <span>{this.state.errorMessage}</span>}
+                <ErrorMessage severity={this.state.severity.toLowerCase()} errorMessage={this.state.errorMessage} />
             </section>
         )
     }
