@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from "react";
-import './css/App.css';
-import streamSaver from 'streamsaver'
+import './css/Download.css';
+import axios from "axios";
 
-const App = () => {
+const Download = () => {
 
   const [file, setFile] = useState({});
   const [url, setUrl] = useState("");
@@ -12,17 +12,18 @@ const App = () => {
 
   }, []);
 
-  const handleClick = async () => {
+  const handleClick = () => {
     // window.open(`http://localhost:3001/download?url=${url}`);
-    await fetch('http://localhost:3001/download', {
+    axios({
       method: 'POST',
+      url: 'http://localhost:3001/download',
+      data: {
+        url
+      },
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        url,
-        user: 'Pasmas'
-      })
+      withCredentials: true
     }).then((res) => {
       console.log(res);
       res.blob().then(blob => {
@@ -69,10 +70,21 @@ const App = () => {
         </div>
       </div>
       <div className="container2">
-
+        <button type="button" onClick={() => {
+          axios({
+            method: 'POST',
+            url: 'http://localhost:3001/authenticated',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            withCredentials: true
+          }).then((res) => {
+            console.log(res);
+          })
+        }}>Test authentication</button>
       </div>
     </>
   );
 }
 
-export default App;
+export default Download;
