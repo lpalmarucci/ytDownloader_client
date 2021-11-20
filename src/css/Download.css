@@ -98,6 +98,7 @@ button{
   transition: all 0.3s ease 0s;
   outline: none;
   z-index:1;
+  line-height: 0;
 }
 
 button:hover{
