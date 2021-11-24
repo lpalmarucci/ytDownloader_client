@@ -2,9 +2,14 @@ import React from 'react'
 
 export default function ErrorMessage(props) {
 
-    let tag = <React.Fragment />;
+    console.log(props);
+
+    let tag = <span className="error-message"></span>;
     if (props.errorMessage !== '') {
-        tag = <span className={`${props.severity}-alert`}>{props.errorMessage}</span>
+        console.log('messaggio da mostrare');
+        tag = <span className={`error-message ${props.severity}-alert`}>{props.errorMessage}</span>
+    } else {
+        console.log('non ci sono errori');
     }
     return (
         <>

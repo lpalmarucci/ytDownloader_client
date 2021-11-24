@@ -1,8 +1,4 @@
 
-body{
-    background-color: var(--light2-color);
-}
-
 .login-section{
     width: 60%;
     height: auto;
@@ -15,9 +11,7 @@ body{
     flex-direction: column;
     padding: 3em;
     row-gap: 2em;
-    background-color: var(--light5-color);
     border-radius: 20px;
-    box-shadow: 2px 8px 10px var(--light4-color);
 }
 
 h1{
@@ -25,12 +19,12 @@ h1{
 }
 
 ::placeholder{
-    color: var(--primary-color);
+    color: var(--light1-color);
 }
 
 input{
     font-size: 12pt;
-    background-color: var(--light6-color);
+    background-color: var(--light5-color);
     height: 3em;
     border: none;
     border-radius: 50px;
@@ -38,7 +32,7 @@ input{
     padding: 2em;
     outline: none;
     border: none;
-    box-shadow: 2px 8px 10px var(--light3-color);
+    box-shadow: 2px 8px 10px var(--light2-color);
 }
 
 .login-form{
@@ -51,4 +45,11 @@ input{
 
 .login-button{
     position: relative;
+    background-color: var(--light5-color);
+    border-color: var(--light5-color);
+}
+
+.login-button:hover{
+    background-color: var(--light2-color) !important;
+    border-color: var(--light2-color) !important;
 }

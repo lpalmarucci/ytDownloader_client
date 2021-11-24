@@ -1,12 +1,9 @@
 
-#title{
-  color: white;
-  z-index: 1;
+
+body{
+  background-color: #60A5D6 !important;
 }
-
-
-
-#container{
+.container{
   padding: 20px;
   width: 100%;
   height: 500px;
@@ -14,8 +11,22 @@
   background-color: var(--primary-color);
   position: relative;
   display: flex;
-  /* flex-direction: row; */
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  row-gap: 2em;
+}
+
+.container-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;    
+  width: clamp(50%,300px, 80%);
+}
+
+.container-flex{
+  display: flex;
+  justify-content: center;
 }
 
 .custom-shape-divider-bottom-1637167991 {
@@ -40,14 +51,7 @@
 }
 
 .container2{
-  height:550px;
-  width: 100%;
   background-color: #60A5D6;
-}
-
-#title{
-  text-align: center;
-  margin: 0 auto;
 }
 
 #main{

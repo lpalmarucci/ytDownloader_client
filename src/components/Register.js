@@ -51,7 +51,8 @@ class Register extends Component {
                 })
                 this.props.history.push('/login');
             } else {
-                this.setState({ errorMessage: res.data.body.errorMessage, severity: res.data.severity });
+                console.log(res.data)
+                // this.setState({ errorMessage: res.data.body.errorMessage, severity: res.data.body.severity });
             }
         })
     }
@@ -66,7 +67,7 @@ class Register extends Component {
                     <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} required />
                     <button type="submit" className="login-button" >Submit</button>
                 </form>
-                <ErrorMessage severity={this.state.severity.toLowerCase()} errorMessage={this.state.errorMessage} />
+                <ErrorMessage severity={this.state.severity} errorMessage={this.state.errorMessage} />
             </section>
         )
     }

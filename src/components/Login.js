@@ -30,9 +30,13 @@ class Login extends Component {
             url: 'http://localhost:3001/login'
         }).then(res => {
             if (checkResponseStatus(res.data)) {
-                this.props.history.push('/');
+                this.props.history.push({
+                    pathname: '/',
+                    state: { authenticated: true }
+                });
             } else {
-                this.setState({ errorMessage: res.data.body.errorMessage, severity: res.data.severity });
+                // console.error(res.data);
+                this.setState({ errorMessage: res.data.body.errorMessage, severity: res.data.body.severity.toLowerCase() });
             }
         })
 
@@ -48,7 +52,7 @@ class Login extends Component {
                     <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} />
                     <button type="submit" className="login-button" >Submit</button>
                 </form>
-                <ErrorMessage severity={this.state.severity.toLowerCase()} errorMessage={this.state.errorMessage} />
+                <ErrorMessage severity={this.state.severity} errorMessage={this.state.errorMessage} />
             </section>
         )
     }
